@@ -7,6 +7,7 @@ export const AppReducer = (state, action) => {
         case 'ADD_EXPENSE':
             let total_budget = 0;
             total_budget = state.expenses.reduce(
+              
                 (previousExp, currentExp) => {
                     return previousExp + currentExp.cost
                 },0
