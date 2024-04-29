@@ -11,3 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.currencyChange {
+    background-color: #CFE2FF;
+    color: #084298;
+    margin-left: 1px;
+}
+
+.currency {
+    display: flex;
+    width: 75px;
+    margin-top: 2px;
+}
+
+.currencyPrefix {
+    
+}
