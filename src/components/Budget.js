@@ -2,9 +2,8 @@ import React, { useContext, useState } from 'react';
 import { AppContext } from '../context/AppContext';
 
 const Budget = () => {
-    const { dispatch } = useContext(AppContext);
+    const { dispatch, currency } = useContext(AppContext);
     const [newBudget, setNewBudget] = useState(0);
-    const [currency, setCurrency] = useState('£');
 
     const handleBudgetChange = (event) => {
         let value = parseInt(event.target.value);
@@ -19,7 +18,10 @@ const Budget = () => {
     };
 
     const handleCurrencyChange = (event) => {
-        setCurrency(event.target.value);
+        dispatch({
+            type: 'CHG_CURRENCY',
+            payload: event.target.value,
+        });
     };
 
     return (
@@ -32,17 +34,18 @@ const Budget = () => {
                 onChange={handleBudgetChange}
             />
             <div className="currency">
-            <label htmlFor="currencySelect">Currency:</label>
-            <select value={currency} onChange={handleCurrencyChange} className="currencyChange">
-                <option value="$">$ Dollar</option>
-                <option value="£">£ Pound</option>
-                <option value="€">€ Euro</option>
-                <option value="₹">₹ Rupee</option>
-            </select>
+                <label htmlFor="currencySelect">Currency:</label>
+                <select value={currency} onChange={handleCurrencyChange} className="currencyChange">
+                    <option value="$">$ Dollar</option>
+                    <option value="£">£ Pound</option>
+                    <option value="€">€ Euro</option>
+                    <option value="₹">₹ Rupee</option>
+                </select>
             </div>
         </div>
     );
 };
 
 export default Budget;
+
 
