@@ -17,13 +17,6 @@ const Budget = () => {
         }
     };
 
-    const handleCurrencyChange = (event) => {
-        dispatch({
-            type: 'CHG_CURRENCY',
-            payload: event.target.value,
-        });
-    };
-
     return (
         <div className='alert alert-secondary'>
             <span>Budget: {currency}</span>
@@ -33,19 +26,11 @@ const Budget = () => {
                 value={newBudget}
                 onChange={handleBudgetChange}
             />
-            <div className="currency">
-                <label htmlFor="currencySelect">Currency:</label>
-                <select value={currency} onChange={handleCurrencyChange} className="currencyChange">
-                    <option value="$">$ Dollar</option>
-                    <option value="£">£ Pound</option>
-                    <option value="€">€ Euro</option>
-                    <option value="₹">₹ Rupee</option>
-                </select>
-            </div>
         </div>
     );
 };
 
 export default Budget;
+
 
 

@@ -20,8 +20,9 @@ code {
 
 .currency {
     display: flex;
-    width: 75px;
-    margin-top: 2px;
+    width: auto;
+    height: 57.6px;
+    border: none;
 }
 
 .currencyPrefix {
