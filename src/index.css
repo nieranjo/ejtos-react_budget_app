@@ -15,14 +15,15 @@ code {
 .currencyChange {
     background-color: #CFE2FF;
     color: #084298;
-    margin-left: 1px;
+    display: flex;
+    width: 150px;
+    height: 57.6px;
+    border: none;
+    border-radius: 5px;
 }
 
 .currency {
     display: flex;
-    width: auto;
-    height: 57.6px;
-    border: none;
 }
 
 .currencyPrefix {
