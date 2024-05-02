@@ -3,13 +3,36 @@ import React, { createContext, useReducer } from 'react';
 export const AppReducer = (state, action) => {
     switch (action.type) {
         case 'ADD_EXPENSE':
-        case 'RED_EXPENSE':
-        case 'DELETE_EXPENSE':
-        case 'SET_BUDGET':
-        case 'CHG_CURRENCY':
+            // Handle adding a new expense
             return {
                 ...state,
-                currency: action.payload, // Update the currency
+                expenses: [...state.expenses, action.payload]
+            };
+        case 'DELETE_EXPENSE':
+            // Handle deleting an expense
+            return {
+                ...state,
+                expenses: state.expenses.filter(expense => expense.id !== action.payload)
+            };
+        case 'MODIFY_EXPENSE':
+            // Handle modifying an expense
+            return {
+                ...state,
+                expenses: state.expenses.map(expense =>
+                    expense.id === action.payload.id ? { ...expense, cost: action.payload.cost } : expense
+                )
+            };
+        case 'SET_BUDGET':
+            // Handle setting a new budget
+            return {
+                ...state,
+                budget: action.payload
+            };
+        case 'CHG_CURRENCY':
+            // Handle changing the currency
+            return {
+                ...state,
+                currency: action.payload
             };
         default:
             return state;
@@ -33,26 +56,21 @@ export const AppContext = createContext();
 export const AppProvider = (props) => {
     const [state, dispatch] = useReducer(AppReducer, initialState);
     let remaining = 0;
-
     if (state.expenses) {
         const totalExpenses = state.expenses.reduce((total, item) => {
-            return (total = total + item.cost);
+            return total + item.cost;
         }, 0);
         remaining = state.budget - totalExpenses;
     }
-
     return (
-        <AppContext.Provider
-            value={{
-                expenses: state.expenses,
-                budget: state.budget,
-                remaining: remaining,
-                dispatch,
-                currency: state.currency
-            }}
-        >
+        <AppContext.Provider value={{
+            expenses: state.expenses,
+            budget: state.budget,
+            remaining: remaining,
+            dispatch,
+            currency: state.currency
+        }}>
             {props.children}
         </AppContext.Provider>
     );
 };
-
