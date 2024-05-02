@@ -13,13 +13,14 @@ const Currency = () => {
 
     return (
         <div className="currency">
-            <label htmlFor="currencySelect">Currency</label>
+            <p className="start">Currency (</p>
             <select value={currency} onChange={handleCurrencyChange} className="currencyChange">
                 <option value="$">$ Dollar</option>
                 <option value="£">£ Pound</option>
                 <option value="€">€ Euro</option>
                 <option value="₹">₹ Rupee</option>
             </select>
+            <p className="end">)</p>
         </div>
     );
 };

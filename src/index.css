@@ -16,14 +16,32 @@ code {
     background-color: #CFE2FF;
     color: #084298;
     display: flex;
-    width: 150px;
+    width: 250px;
     height: 57.6px;
     border: none;
     border-radius: 5px;
 }
 
+.currencyChange option {
+  text-align: center;
+}
+
 .currency {
     display: flex;
+}
+
+.currency .start {
+  color: #084298;
+  position: absolute;
+  top: 96.5px;
+  right: 340.5px;
+}
+
+.currency .end {
+  color: #084298;
+  position: absolute;
+  top: 96.5px;
+  right: 261.5px;
 }
 
 .currencyPrefix {
@@ -31,3 +49,38 @@ font-size: 16px;
 position: absolute;
 left: 440px;
 }
+
+.increase {
+border-radius: 100px;
+background-color: green;
+width: 40px;
+height: 40px;
+border-radius: 25px;
+}
+
+.increase h1 {
+  position: relative;
+  color: white;
+  font-size: 45px;
+  text-align: center;
+  font-weight: bolder;
+  bottom: 15px;
+  right: 3px;
+}
+
+.decrease {
+  border-radius: 100px;
+  background-color: red;
+  width: 40px;
+  height: 40px;
+  border-radius: 25px;
+  }
+
+  .decrease h1 {
+    position: relative;
+    color: white;
+    font-size: 45px;
+    text-align: center;
+    font-weight: bolder;
+    bottom: 15px;
+  }
